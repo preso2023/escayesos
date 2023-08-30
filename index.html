@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Partes de Trabajo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="imagenes/favicon.ico">
+    <!-- <link rel="stylesheet" href="css/index.css"> -->
+</head>
+<style>
+	/*NO MOSTRAR FLECHAS EN INPUT TYPE NUMBER*/
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+        -moz-appearance: textfield;
+        }
+</style>
+<body>
+    <div class="container">
+        <div class="nav-scroller bg-body shadow-sm">
+            <nav class="nav nav-underline" aria-label="Secondary navigation">
+                <a id="addSeccionLink" class="nav-link text-secondary" aria-current="page" href="#">Partes de trabajo</a>
+                <a id="addSeccionLink" class="nav-link" aria-current="page" href="./app_semanal/app_semanal.html">Parte semanal</a>
+            </nav>
+        </div>
+        <form>
+            <div class="form-gruop col-md-2">
+                <label for="ftrabajador" class="control-label">Trabajador</label>
+                <input type="text" class="form-control" id="ftrabajador" name="ftrabajador" required>
+            </div>
+            <div class="form-gruop col-md-2">
+                <label for="fhoras" class="control-label">Horas</label>
+                <input type="number" class="form-control" id="fhoras" name="fhoras" pattern="^\d*\.?d+$" step="0.1" required>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="ffecha" class="control-label">Fecha</label>
+                <input type="date" class="form-control" id="ffecha" name="ffecha" required>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="fempresa" class="control-label">Empresa</label><br>
+                <input type="text" class="form-control" id="fempresa" name="fempresa" required>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="fobra" class="control-label">Obra</label><br>
+                <input type="text" class="form-control" id="fobra" name="fobra" required>
+            </div>
+            <div class="form-group col-md-4 mb-1">
+                <label for="fdescripcion" class="control-label">Descripción</label><br>
+                <textarea name="fdescripcion" class="form-control" id="fdescripcion" cols="40" rows="5"></textarea>
+            </div>   
+            <div class="form-group col-md-4 mb-1">
+                <label for="fmaterial" class="control-label">Material</label><br>
+                <textarea name="fmaterial" class="form-control" id="fmaterial" cols="40" rows="5"></textarea>
+            </div>   
+            <div class="form-group" id="canvas_div" style="display: inline-block;">
+                <label for="canvas" class="control-label">Firma</label><br>
+                <canvas id="canvas" width="300" height="200" style="border: 2px solid rgb(0, 0, 0); border-radius: 10px;"></canvas>
+                <div class="form-group" id="botones_div">
+                <!-- No muestro ninguno de los dos option select pero los dejo para coger los valores por defecto -->
+                <!-- Line width : --> <select id="selWidth" hidden>
+                    <option value="5" selected="selected">5</option>
+                    <option value="11">11</option>
+                    <option value="13">13</option>
+                    <option value="15">15</option>
+                </select>
+                <!-- Color : --> <select id="selColor" hidden>
+                    <option value="black" selected="selected">black</option>
+                    <option value="blue">blue</option>
+                    <option value="red">red</option>
+                    <option value="green">green</option>
+                    <option value="yellow">yellow</option>
+                    <option value="gray">gray</option>
+                </select>
+                </div>    
+            </div>
+
+            <div class="form-group col-md-2 mt-1">
+                <button class="btn btn-danger" onclick="javascript:clearArea();return false;" data-html2canvas-ignore>Limpiar firma</button>
+                <!-- <button class="btn btn-success" onClick="window.print()" onsubmit="event.preventDefault()" data-html2canvas-ignore>Imprimir Medición</button> -->
+            </div>
+            <div class="form-group col-md-2 mt-1">
+                <button type="button" id="btnResetear" class="btn btn-warning  my-1" onclick="resetearFormulario()" data-html2canvas-ignore>Limpiar</button>
+            </div>
+            <div class="form-group col-md-2 mt-1">
+                <button type="button" id="btnCapturaImagen" class="btn btn-success  my-1" onclick="capturaImagen()" data-html2canvas-ignore>Captura Imagen</button>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js"></script> 
+    <script src="javascript/index.js"></script>
+    <script src="javascript/programa.js"></script>
+
+</body>
+</html> 
